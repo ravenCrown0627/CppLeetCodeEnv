@@ -22,6 +22,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 alias cmake_configure="cmake -S \"$REPO_ROOT\" -B \"$BUILD_DIR\" -G \"Unix Makefiles\""
 alias cmake_build="cmake --build \"$BUILD_DIR\" -- -j$(nproc)"
 alias cmake_clean="rm -rf \"$BUILD_DIR\"/* \"$BUILD_DIR\"/.* 2>/dev/null || true && echo 'Build directory cleaned.'"
+alias bash_update_launch="bash \"$SCRIPT_DIR\"/update_launch_json.sh"
 
 # Alias for debugging
 alias gdb="gdb -q" # Quiet mode

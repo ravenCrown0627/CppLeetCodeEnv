@@ -55,7 +55,7 @@ This repository provides a robust C++ environment for efficiently solving and de
 5. **Update VSCode Debug Configuration**:
    Update the `launch.json` file for debugging by running:
    ```bash
-   bash script/update_launch_json.sh
+   bash_update_launch
    ```
 
 6. **Launch the Debugger**:
