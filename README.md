@@ -32,7 +32,7 @@ This repository provides a robust C++ environment for efficiently solving and de
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ravenCrown0627/CppLeetCodeEnv.git
    cd CppLeetCodeEnv
    source script/set_env.sh
    ```
