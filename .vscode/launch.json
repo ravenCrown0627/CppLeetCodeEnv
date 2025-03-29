@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Selected Binary",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/bin/${input:selectBinary}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set breakpoint on SIGSEGV",
+          "text": "handle SIGSEGV stop",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Show SIMD registers (for AVX debugging)",
+          "text": "set print frame-arguments all",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Enable AMD-specific register display (RIP, RFLAGS)",
+          "text": "set print raw-values on",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Use AMD-compatible disassembly syntax",
+          "text": "set disassembly-flavor att",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "selectBinary",
+      "type": "pickString",
+      "description": "Select the binary to debug",
+      "options": []
+    }
+  ]
+}
