@@ -47,9 +47,7 @@
       "type": "pickString",
       "description": "Select the binary to debug",
       "options": [
-        "0001-HelloWorld_main",
-        "0002-CloneWorld_main",
-        "0003-New_main"
+        "two-sum_main"
       ]
     }
   ]

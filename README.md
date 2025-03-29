@@ -1,3 +1,8 @@
+[![C++](https://img.shields.io/badge/C++-00599C?&logo=c%2B%2B&logoColor=white)](https://isocpp.org/)
+[![License](https://img.shields.io/github/license/ravenCrown0627/CppLeetCodeEnv)](https://github.com/ravenCrown0627/CppLeetCodeEnv/blob/main/LICENSE)
+[![Repo Size](https://img.shields.io/github/repo-size/ravenCrown0627/CppLeetCodeEnv)](https://github.com/ravenCrown0627/CppLeetCodeEnv)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen)]()
+
 # C++ LeetCode Debugging Environment
 
 This repository provides a robust C++ environment for efficiently solving and debugging LeetCode problems.
@@ -23,7 +28,7 @@ This repository provides a robust C++ environment for efficiently solving and de
   - CMake Tools
   - GitLens
 
-## Setup Instructions
+# Setup Instructions
 
 1. **Clone the Repository**:
    ```bash
@@ -72,33 +77,40 @@ To automatically update the problem list in the `README.md` file after every com
 2. **Add the Following Script to post-commit**: 
     Copy and paste the following script into the post-commit file:
     ```bash
-    #!/bin/bash
-    
-    # Source the set_env.sh script to load environment variables
-    source "$(dirname "${BASH_SOURCE[0]}")/../../script/set_env.sh"
-    
-    # Call the script to update the README using the SCRIPT_DIR variable
-    python3 "$SCRIPT_DIR/update_readme.py"
-    # Check if the README was updated successfully
-    if [ $? -ne 0 ]; then
-        echo "Failed to update README."
-        exit 1
-    fi
-    # Add the updated README to the latest commit
-    git add README.md
-    git commit --amend --no-edit
-    # Check if the commit was successful
-    if [ $? -ne 0 ]; then
-        echo "Failed to amend the commit."
-        exit 1
-    fi
-    # Display the commit message
-    echo "Commit amended successfully. Here is the commit message:"
-    git log -1 --pretty=format:"%h %s"
-    
-    # Display the updated README content
-    echo "README has been updated. Here is the updated content:"
-    cat README.md
+   #!/bin/bash
+
+   # Prevent infinite loop by checking if the hook is already running
+   if [ "$GIT_POST_COMMIT_RUNNING" == "true" ]; then
+      exit 0
+   fi
+
+   # Set the environment variable to indicate the hook is running
+   export GIT_POST_COMMIT_RUNNING=true
+
+   # Source the set_env.sh script to load environment variables (suppress output)
+   source "$(dirname "${BASH_SOURCE[0]}")/../../script/set_env.sh" > /dev/null 2>&1
+
+   # Call the script to update the README using the SCRIPT_DIR variable
+   python3 "$SCRIPT_DIR/update_readme.py"
+   if [ $? -ne 0 ]; then
+      echo "Failed to update README."
+      exit 1
+   fi
+
+   # Add the updated README to the latest commit
+   git add README.md
+   git commit --amend --no-edit
+   if [ $? -ne 0 ]; then
+      echo "Failed to amend the commit."
+      exit 1
+   fi
+
+   # Display the commit message
+   echo "Commit amended successfully. Here is the commit message:"
+   git log -1 --pretty=format:"%h %s"
+
+   # Display the updated README content
+   echo "README has been updated."
     ```
 3. **Make the Hook Executable**: 
     Run the following command to make the post-commit script executable:
