@@ -54,3 +54,12 @@ This repository provides a robust C++ environment for efficiently solving and de
 
 6. **Launch the Debugger**:
    Open Visual Studio Code, press `F5`, and start debugging your problem.
+
+# Solved Problems
+
+| Problem Title       | Path                                   |
+|---------------------|----------------------------------------|
+| 0001-HelloWorld | [src/0001-HelloWorld/](src/0001-HelloWorld/) |
+| 0002-CloneWorld | [src/0002-CloneWorld/](src/0002-CloneWorld/) |
+| 0003-New | [src/0003-New/](src/0003-New/) |
+> **Note**: The table will be updated automatically which set under `.git/hook`
