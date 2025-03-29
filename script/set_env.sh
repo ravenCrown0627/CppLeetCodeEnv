@@ -11,7 +11,6 @@ echo "Repository Root: $REPO_ROOT"
 # Create and navigate to the build directory
 export BUILD_DIR="$REPO_ROOT/build"
 mkdir -p "$BUILD_DIR"
-cd "$BUILD_DIR"
 echo "Build Directory: $BUILD_DIR"
 
 # Enable colored output for GCC and Clang
